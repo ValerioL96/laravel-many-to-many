@@ -15,7 +15,14 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-text">
-                        Language Used: {{$project->language_used}}
+                        @forelse ($project->technologies as $technology)
+                        <span class="badge text" style="background-color: {{ $technology->color }}">
+
+                            {{ $technology->name}}
+                        </span>
+                        @empty
+                        No technology set
+                        @endforelse
                     </h5>
                     <a href=" {{ $project->url_repo}}" class="card-text">
                         Click here for the repository

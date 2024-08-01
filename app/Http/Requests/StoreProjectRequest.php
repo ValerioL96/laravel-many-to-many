@@ -26,6 +26,7 @@ class StoreProjectRequest extends FormRequest
                 "language_used"=>['required', 'min:2', 'max:255'],
                 "url_repo"=>['url', 'nullable'],
                 'type_id' => ['required', 'exists:types,id'],
+                'technologies' => ['required', 'array', 'exists:technologies,id'],
             ];
     }
 

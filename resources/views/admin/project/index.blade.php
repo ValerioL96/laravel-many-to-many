@@ -12,7 +12,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Type</th>
                         <th scope="col">Project Name</th>
-                        <th scope="col">Language Used</th>
+                        <th scope="col">Technology used</th>
                         <th scope="col">Url Repository</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -23,10 +23,22 @@
                     <tr>
                         <th>{{ $project->id}}</th>
                         <th>
-                            {{$project->type->name}}
+                            <span class="badge text-decoretion-none p-2"
+                            style="background-color: {{$project->type->color}}">
+                                {{$project->type->name}}
+                            </span>
                         </th>
                         <td>{{ $project->name}}</td>
-                        <td>{{ $project->language_used}}</td>
+                        <td>
+                            @forelse ($project->technologies as $technology)
+                            <span class="badge text" style="background-color: {{ $technology->color }}">
+
+                                {{ $technology->name}}
+                            </span>
+                            @empty
+                            No technology set
+                            @endforelse
+                        </td>
                         <td>
                             <a href=" {{ $project->url_repo}}">Click here for the repository</a></td>
                         <td>
